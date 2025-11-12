@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro de usuarios</title>
-    <link rel="stylesheet" href="../assets/css/estilos.css">
-</head>
-<body>
-    <?php
+<?php
+    session_start();
+
     $errores = [];
     $usuarios = [];
 
@@ -37,6 +30,7 @@
                 // Una vez terminada la validacion de los datos, si esta bien introducido los mete en un array, y si no muestra los errores
                 if(empty($errores)){
                     echo "<p>Datos introducidos correctamente</p>";
+                    //Hago un array asociativo y luego lo meto en un array general de usuarios, así creo una especie de colección
                     $nuevoUsuario=[
                         "username" => $username,
                         "email" => $email,
@@ -47,59 +41,77 @@
                     ];
 
                     $usuarios[] = $nuevoUsuario;
+
+                    $_SESSION['usuarios'] = $usuarios; //Con esto lo que hago es guardar el array en la sesion para que al hacer el login se guarden las credenciales
+
+                    header("Location: index.php");
                 }
                 else{
                     foreach($errores as $error){
-                        echo "<p>$error</p>";
+                        echo "<p style='color:red'>$error</p>";
                     }
                 }
         }
     }
-    ?>
-    <h1>Registro de usuario</h1>
+?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de usuarios</title>
+    <link rel="stylesheet" href="../assets/css/estilos.css">
+</head>
+<body>
+    <div class="register-page">
+        <h1>Registro de usuario</h1>
+        <?php if(isset($error)) echo "<p style='color:red'>$error</p>"; ?>
+        <form id="formRegistro" action="" method="POST">
+            <div class="form-group">
+                <label for="username">Nombre de Usuario:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
 
-    <form id="formRegistro" action="" method="POST">
-        <div class="form-group">
-            <label for="username">Nombre de Usuario:</label>
-            <input type="text" id="username" name="username" required>
-        </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
 
-        <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-        </div>
+            <div class="form-group">
+                <label for="password">Contraseña:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
 
-        <div class="form-group">
-            <label for="password">Contraseña:</label>
-            <input type="password" id="password" name="password" required>
-        </div>
+            <div class="form-group">
+                <label for="confirm_password">Confirmar Contraseña:</label>
+                <input type="password" id="confirm_password" name="confirm_password" required>
+            </div>
 
-        <div class="form-group">
-            <label for="confirm_password">Confirmar Contraseña:</label>
-            <input type="password" id="confirm_password" name="confirm_password" required>
-        </div>
+            <div class="form-group">
+                <label for="experiencia">Nivel de Experiencia:</label>
+                <select id="experiencia" name="experiencia" required>
+                    <option value="">Seleccione...</option>
+                    <option value="alto">Alto</option>
+                    <option value="medio">Medio</option>
+                    <option value="bajo">Bajo</option>
+                </select>
+            </div>
 
-        <div class="form-group">
-            <label for="experiencia">Nivel de Experiencia:</label>
-            <select id="experiencia" name="experiencia" required>
-                <option value="">Seleccione...</option>
-                <option value="alto">Alto</option>
-                <option value="medio">Medio</option>
-                <option value="bajo">Bajo</option>
-            </select>
-        </div>
+            <div class="form-group">
+                <label for="especialidad">Especialidad:</label>
+                <input type="text" id="especialidad" name="especialidad" required>
+            </div>
 
-        <div class="form-group">
-            <label for="especialidad">Especialidad:</label>
-            <input type="text" id="especialidad" name="especialidad" required>
-        </div>
+            <div class="form-group">
+                <label for="provincia">Provincia:</label>
+                <input type="text" id="provincia" name="provincia" required>
+            </div>
+            <br>
 
-        <div class="form-group">
-            <label for="provincia">Provincia:</label>
-            <input type="text" id="provincia" name="provincia" required>
-        </div>
+            <a href = "index.php">Volver a inicio</a><br><br>
 
-        <button type="submit">Registrar</button>
-    </form>
+            <button type="submit">Registrar</button>
+        </form>
+    </div>
 </body>
 </html>
