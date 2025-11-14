@@ -36,4 +36,4 @@ if (session_status() === PHP_SESSION_NONE) {
                 </ul>
             </nav>
         </div>     
-    </header>
+    </header> <!-- No se cierra porque esta enlazado con index.php -->

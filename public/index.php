@@ -1,5 +1,5 @@
 <?php
-    include_once __DIR__ . '/../includes/header.php';
+    include_once __DIR__ . '/../includes/header.php'; // Aqui arriba lo unimos con el header.php y por eso no hace falta poner la etiqueta de HTML
 ?>
 <section class="hero">
         <div class="container">
@@ -11,6 +11,19 @@
         </p>
         <a href="#">Volver al inicio</a>
 </section>
+
+<section class="acciones">
+    <div class="container">
+        <h2>Explora y comparte rutas</h2>
+        <p>Accede a las rutas creadas por otros usuarios o comparte tus propias experiencias.</p>
+
+        <div class="botones-acciones">
+            <a class="btn" href="routes/list.php">Ver rutas creadas</a>
+            <a class="btn" href="routes/create.php">Crear nueva ruta</a>
+        </div>
+    </div>
+</section>
+
 <?php
-    include_once __DIR__ . '/../includes/footer.php';
+    include_once __DIR__ . '/../includes/footer.php'; //Como ponemos el footer.php aqui abajo no hace falta cerrar el html
 ?>

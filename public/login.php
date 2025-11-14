@@ -5,7 +5,7 @@ session_start();
         $username = $_POST['username'];
         $password = $_POST['password'];
 
-        if (isset($_SESSION['usuarios'])) {
+        if (isset($_SESSION['usuarios'])) { //Si ya existian usuario creados, los ponemos en $usuarios para usarlo en esta pagina, si no creamos el array.
             $usuarios = $_SESSION['usuarios'];
         }
         else{
@@ -13,9 +13,9 @@ session_start();
         }
 
         $loginCorrecto = false;
-
+        //Recorremos el array comprobando si los datos introducidos coinciden con los usuarios registrados.
         foreach($usuarios as $us){
-            if($username == $us['username'] && $password == $us['password']){
+            if($username == $us['username'] && $password == $us['password']){ //Si lo hace el boolean lo convierte en true para que no salga el error y asigna el usuario introducido en el usuario de la sesion
                 $loginCorrecto=true;
                 $_SESSION["username"] = $us['username'];
                 $_SESSION["login_time"] = time();
@@ -23,7 +23,7 @@ session_start();
                 exit();
             }
         }
-        if($loginCorrecto == false){
+        if($loginCorrecto == false){ //Si no hay usuarios que coincidan con los datos introducidos el boolean que antes ha sido declarado false, no cambiara, por tanto entrar en el if y mostrara el error
             echo "<h2 style='color:red'>Credenciales incorrectas</h2>";
         }
     }

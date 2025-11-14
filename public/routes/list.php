@@ -19,7 +19,7 @@ $rutas = isset($_SESSION['rutas']) ? $_SESSION['rutas'] : [];
     </div>
 
     <h1 style="text-align: center;">Listado de Rutas</h1>
-
+    <a href="../index.php" style="text-align: right">Inicio</a>
     <?php if (empty($rutas)): ?>
         <div class="sin-rutas">
             <h2>No hay rutas creadas</h2>
@@ -30,9 +30,9 @@ $rutas = isset($_SESSION['rutas']) ? $_SESSION['rutas'] : [];
             <?php foreach ($rutas as $index => $ruta): ?>
                 <div class="ruta-card">
                     <div class="ruta-imagenes">
-                        <?php if (!empty($ruta['imagenes'])): ?>
+                        <?php if (!empty($ruta['imagenes'])): //Entra si imagenes no esta vacía?> 
                             <?php foreach ($ruta['imagenes'] as $imagen): ?>
-                                <img src="<?php echo htmlspecialchars($imagen); ?>" alt="Imagen de ruta" class="ruta-miniatura" onerror="this.style.display='none'">
+                                <img src="<?php echo htmlspecialchars($imagen); // Para cada imagen que haya en el array se pone en el html?>" alt="Imagen de ruta" class="ruta-miniatura" onerror="this.style.display='none'">
                             <?php endforeach; ?>
                         <?php else: ?>
                             <p>No hay imágenes</p>
@@ -44,7 +44,7 @@ $rutas = isset($_SESSION['rutas']) ? $_SESSION['rutas'] : [];
                         
                         <div class="ruta-dato">
                             <strong>Dificultad:</strong> 
-                            <?php 
+                            <?php //Ponemos el resto de valores que tienen las rutas
                             $dificultadTexto = [
                                 'facil' => 'Fácil',
                                 'moderada' => 'Moderada',

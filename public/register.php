@@ -1,6 +1,8 @@
 <?php
     session_start();
 
+    require_once __DIR__ . "/../includes/functions.php"; //Aqui tengo la funcion para validar email
+
     $errores = [];
     $usuarios = [];
 
@@ -16,7 +18,7 @@
         if(isset($_POST['username']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['confirm_password']) && // Verifico que existen los campos
             isset($_POST['experiencia']) && isset($_POST['especialidad']) && isset($_POST['provincia'])){
                 //Valido el formato del email
-                if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+                if(!validarEmail($email)){
                     $errores[]="Email no válido";
                 }
                 //Valido que la contraseña introducida es igual a confirm_password

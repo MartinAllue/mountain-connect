@@ -856,3 +856,130 @@ button[type="submit"]:hover {
         font-size: 1.2rem;
     }
 }
+
+.acciones {
+    background: linear-gradient(135deg, var(--mountain-green-light), #e8f3ee);
+    padding: 80px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.acciones::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path fill="%231d5e31" d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".1"/></svg>');
+    background-size: cover;
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.acciones .container {
+    position: relative;
+    z-index: 1;
+}
+
+.acciones h2 {
+    color: var(--mountain-green);
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.acciones p {
+    color: var(--text-dark);
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+}
+
+.botones-acciones {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.botones-acciones .btn {
+    padding: 15px 30px;
+    background: linear-gradient(to right, var(--mountain-green), var(--mountain-dark-blue));
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(29, 94, 49, 0.3);
+    border: 2px solid transparent;
+    font-size: 1.1rem;
+    min-width: 200px;
+}
+
+.botones-acciones .btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(29, 94, 49, 0.4);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.botones-acciones .btn:first-child {
+    background: linear-gradient(to right, var(--mountain-brown), var(--mountain-brown-light));
+    box-shadow: 0 4px 15px rgba(139, 69, 19, 0.3);
+}
+
+.botones-acciones .btn:first-child:hover {
+    box-shadow: 0 8px 25px rgba(139, 69, 19, 0.4);
+}
+
+/* Responsive para la sección de acciones */
+@media (max-width: 768px) {
+    .acciones {
+        padding: 60px 0;
+    }
+    
+    .acciones h2 {
+        font-size: 2rem;
+    }
+    
+    .acciones p {
+        font-size: 1.1rem;
+        padding: 0 20px;
+    }
+    
+    .botones-acciones {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    .botones-acciones .btn {
+        width: 90%;
+        max-width: 300px;
+        padding: 14px 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .acciones {
+        padding: 50px 0;
+    }
+    
+    .acciones h2 {
+        font-size: 1.8rem;
+    }
+    
+    .acciones p {
+        font-size: 1rem;
+    }
+    
+    .botones-acciones .btn {
+        font-size: 1rem;
+        padding: 12px 20px;
+    }
+}
